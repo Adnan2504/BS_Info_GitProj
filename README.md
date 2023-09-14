@@ -29,7 +29,7 @@ Provide instructions on how to install your project. You can include code snippe
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/your-project.git
+git clone https://github.com/Adnan2504/BS_Info_GitProj.git
 
 # Navigate to the project directory
 cd your-project
