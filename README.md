@@ -17,8 +17,6 @@ Man kann geld überweisen, Geld abheben/einzahlen, Kontoauszug ausgeben
 
 ## Features
 
-List of the Futures in my project
-
 - Konto anlegen
 - Konto löschen
 - Einzahlen
