@@ -1,6 +1,6 @@
-# Project Name
+# Test Git Proj Info
 
-A brief description of your project.
+A short description of my project
 
 ## Table of Contents
 
