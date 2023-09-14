@@ -1,6 +1,6 @@
 # Test Git Proj Info
 
-A short description of my project
+Kurze Beschreibung:
 
 ## Table of Contents
 
@@ -9,8 +9,6 @@ A short description of my project
 - [Installation](#installation)
 
 ## Introduction
-
-Introduction to my project
 
 Mit dem Projekt kann man Girokonot, Sparkonoto und Kreditkonto anlegen.
 Man kann geld überweisen, Geld abheben/einzahlen, Kontoauszug ausgeben
