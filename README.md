@@ -7,16 +7,12 @@ A short description of my project
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
-- 
+
 ## Introduction
 
 Introduction to my project....
-Some random text
-more
-more
-more
-more
-more
+Mit dem Projekt kann man Girokonot, Sparkonoto und Kreditkonto anlegen.
+Man kann geld überweisen, Geld abheben/einzahlen, Kontoauszug ausgeben
 
 ## Features
 
