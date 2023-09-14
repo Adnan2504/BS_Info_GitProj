@@ -29,7 +29,7 @@ List the key features of your project. You can use bullet points for this sectio
 
 ## Installation
 
-Provide instructions on how to install your project. You can include code snippets if necessary. For example:
+To install this project use command below:
 
 ```bash
 # Clone the repository
