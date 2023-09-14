@@ -19,9 +19,12 @@ Man kann geld überweisen, Geld abheben/einzahlen, Kontoauszug ausgeben
 
 List of the Futures in my project
 
-- Feature 1
-- Feature 2
-- Feature 3
+- Konto anlegen
+- Konto löschen
+- Einzahlen
+- Abheben
+- Kontostand
+- Kontoart
 
 ![Alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/License_icon-mit-88x31-2.svg/1280px-License_icon-mit-88x31-2.svg.png)
 
