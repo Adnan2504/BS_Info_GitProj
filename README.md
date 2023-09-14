@@ -20,7 +20,7 @@ more
 
 ## Features
 
-List the key features of your project. You can use bullet points for this section:
+List of the Futures in my project
 
 - Feature 1
 - Feature 2
