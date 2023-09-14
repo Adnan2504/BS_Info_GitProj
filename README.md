@@ -7,10 +7,7 @@ A short description of my project
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-
+- 
 ## Introduction
 
 Introduction to my project....
