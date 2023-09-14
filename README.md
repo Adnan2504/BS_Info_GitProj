@@ -10,7 +10,8 @@ A short description of my project
 
 ## Introduction
 
-Introduction to my project....
+Introduction to my project
+
 Mit dem Projekt kann man Girokonot, Sparkonoto und Kreditkonto anlegen.
 Man kann geld überweisen, Geld abheben/einzahlen, Kontoauszug ausgeben
 
