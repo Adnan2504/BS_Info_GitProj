@@ -5,7 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String userInput;
 
-        Kontoverwaltung kontoverwaltung = new Kontoverwaltung("Adnan Bajric", "JKDWKALJDA", "432423423432432423", 10, 11.89, "Girokonto");
+        Kontoverwaltung kontoverwaltung = new Kontoverwaltung();
 
         while (true) {
             System.out.println("Welche Aktion möchten Sie durchführen?");
@@ -13,7 +13,7 @@ public class Main {
             System.out.println("2 - Einzahlen");
             System.out.println("3 - Abheben");
             System.out.println("4 - Kontoauszug");
-            System.out.println("5 - Konto löschen");
+            System.out.println("5 - Geld zwischen Konten überweisen");
             System.out.println("0 - Programm beenden");
             System.out.println("\n");
 
@@ -27,11 +27,13 @@ public class Main {
                     kontoverwaltung.kontoErstellen();
                     break;
                 case "2":
+                    System.out.print("Betrag einzahlen: ");
                     userInput = scanner.nextLine();
                     double inputEinzahlen = Double.parseDouble(userInput);
                     kontoverwaltung.einzahlen(inputEinzahlen);
                     break;
                 case "3":
+                    System.out.print("Betrag abheben: ");
                     userInput = scanner.nextLine();
                     double inputAbheben = Double.parseDouble(userInput);
                     kontoverwaltung.abheben(inputAbheben);
@@ -40,6 +42,7 @@ public class Main {
                     kontoverwaltung.kontoauszug();
                     break;
                 case "5":
+                    kontoverwaltung.geldUeberweisen();
                     break;
                 default:
                     System.out.println("Ungültige Eingabe. Bitte wählen Sie eine der verfügbaren Optionen.");

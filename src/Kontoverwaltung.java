@@ -1,63 +1,124 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-class Kontoverwaltung {
-    private String kontoinhaber;
-    private String bankleitzahl;
-    private String kontonummer;
-    private double ueberziehungsrahmen;
-    private double kontofuehrungsgebuehren;
-    protected double kontostand;
-    private String kontoart;
-
-    public Kontoverwaltung(String kontoinhaber, String bankleitzahl, String kontonummer, double ueberziehungsrahmen, double kontofuehrungsgebuehren, String kontoart) {
-        this.kontoinhaber = kontoinhaber;
-        this.bankleitzahl = bankleitzahl;
-        this.kontonummer = kontonummer;
-        this.ueberziehungsrahmen = ueberziehungsrahmen;
-        this.kontofuehrungsgebuehren = kontofuehrungsgebuehren;
-        this.kontostand = 0.0;
-        this.kontoart = kontoart;
-    }
+public class Kontoverwaltung {
+    private List<Konto> konten = new ArrayList<>();
 
     public void kontoErstellen() {
-        this.kontoinhaber = "Adnan Bajric";
-        this.bankleitzahl = "DWADWASDWA";
-        this.kontonummer = "43324321432";
-        this.ueberziehungsrahmen = 23.2;
-        this.kontofuehrungsgebuehren = 11.23;
-        this.kontostand = 19349.32;
-        this.kontoart = "Girokonto";
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Kontoinhaber: ");
+        String kontoinhaber = scanner.nextLine();
+
+        System.out.println("Wählen Sie die Kontoart:");
+        System.out.println("1 - Girokonto");
+        System.out.println("2 - Sparkonto");
+        System.out.println("3 - Kreditkonto");
+
+        int kontoartAuswahl = Integer.parseInt(scanner.nextLine());
+
+        if (kontoartAuswahl < 1 || kontoartAuswahl > 3) {
+            System.out.println("Ungültige Auswahl.");
+            return;
+        }
+
+        String kontoart;
+        if (kontoartAuswahl == 1) {
+            kontoart = "Girokonto";
+        } else if (kontoartAuswahl == 2) {
+            kontoart = "Sparkonto";
+        } else {
+            kontoart = "Kreditkonto";
+        }
+
+        Konto neuesKonto = new Konto(kontoinhaber, kontoart);
+        konten.add(neuesKonto);
+        System.out.println("Konto erstellt.");
     }
 
     public void einzahlen(double betrag) {
-        if (betrag > 0) {
-            kontostand += betrag;
-            System.out.println("Einzahlung von " + betrag + " Euro erfolgreich. Neuer Kontostand: " + kontostand + " Euro");
-            System.out.println("\n");
-        } else {
-            System.out.println("Ungültiger Einzahlungsbetrag.");
+        Scanner scanner = new Scanner(System.in);
+        //System.out.print("Kontonummer: ");
+
+        int index = 1;
+        for (Konto konto : konten) {
+            System.out.println(index + " - " + konto.getKontoart() + " (Kontonummer: " + konto.getKontonummer() + ")");
+            index++;
         }
+
+        String kontonummer = scanner.nextLine();
+
+        for (Konto konto : konten) {
+            konto.einzahlen(betrag);
+            System.out.println("Einzahlung auf Konto " + konto.getKontonummer() + " erfolgreich.");
+            return;
+
+        }
+
+        System.out.println("Kontonummer nicht gefunden.");
     }
 
     public void abheben(double betrag) {
-        if (betrag > 0) {
-            if (kontostand - betrag >= -ueberziehungsrahmen) {
-                kontostand -= betrag;
-                System.out.println("Abhebung von " + betrag + " Euro erfolgreich. Neuer Kontostand: " + kontostand + " Euro");
-                System.out.println("\n");
-            } else {
-                System.out.println("Kontostand reicht nicht aus.");
-            }
-        } else {
-            System.out.println("Ungültiger Abhebungsbetrag.");
+        Scanner scanner = new Scanner(System.in);
+        int index = 1;
+        for (Konto konto : konten) {
+            System.out.println(index + " - " + konto.getKontoart() + " (Kontonummer: " + konto.getKontonummer() + ")");
+            index++;
         }
+        String kontonummer = scanner.nextLine();
+
+        for (Konto konto : konten) {
+            konto.abheben(betrag);
+            System.out.println("Abhebung von Konto " + konto.getKontonummer() + " erfolgreich.");
+            return;
+
+        }
+
+        System.out.println("Kontonummer nicht gefunden.");
     }
 
     public void kontoauszug() {
-        System.out.println("Kontoinhaber: " + kontoinhaber);
-        System.out.println("Bankleitzahl: " + bankleitzahl);
-        System.out.println("Kontonummer: " + kontonummer);
-        System.out.println("Kontostand: " + kontostand + " Euro");
-        System.out.println("Kontoart: " + kontoart);
+        for (Konto konto : konten) {
+            konto.kontoauszug();
+        }
+    }
+
+    public void geldUeberweisen() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Von welchem Konto möchten Sie überweisen?");
+        int index = 1;
+        for (Konto konto : konten) {
+            System.out.println(index + " - " + konto.getKontoart() + " (Kontonummer: " + konto.getKontonummer() + ")");
+            index++;
+        }
+        int vonIndex = Integer.parseInt(scanner.nextLine()) - 1;
+
+        if (vonIndex < 0 || vonIndex >= konten.size()) {
+            System.out.println("Ungültige Auswahl.");
+            return;
+        }
+
+        System.out.println("Auf welches Konto möchten Sie überweisen?");
+        int index2 = 1;
+        for (Konto konto : konten) {
+            System.out.println(index2 + " - " + konto.getKontoart() + " (Kontonummer: " + konto.getKontonummer() + ")");
+            index2++;
+        }
+        int aufIndex = Integer.parseInt(scanner.nextLine()) - 1;
+
+        if (aufIndex < 0 || aufIndex >= konten.size()) {
+            System.out.println("Ungültige Auswahl.");
+            return;
+        }
+
+        System.out.print("Betrag: ");
+        double betrag = Double.parseDouble(scanner.nextLine());
+
+        Konto vonKonto = konten.get(vonIndex);
+        Konto aufKonto = konten.get(aufIndex);
+
+        vonKonto.ueberweisen(aufKonto, betrag);
     }
 }
