@@ -32,8 +32,8 @@ public class Kontoverwaltung {
             kontoart = "Kreditkonto";
         }
 
-        Konto neuesKonto = new Konto(kontoinhaber, kontoart);
-        konten.add(neuesKonto);
+        //Konto neuesKonto = new Konto(kontoinhaber, kontoart);
+        //konten.add(neuesKonto);
         System.out.println("Konto erstellt.");
     }
 

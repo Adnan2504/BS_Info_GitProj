@@ -4,23 +4,25 @@ import java.util.Random;
 import java.util.Scanner;
 
 class Konto {
-    private String kontoinhaber;
-    private String bankleitzahl;
-    private String kontonummer;
-    private double ueberziehungsrahmen;
-    private double kontofuehrungsgebuehren;
-    private double kontostand;
-    private String kontoart;
+    public String kontoinhaber;
+    public String bankleitzahl;
+    public String kontonummer;
+    public double ueberziehungsrahmen;
+    public String kontofuehrungsgebuehren;
+    public double kontostand;
+    public String kontoart;
 
-    public Konto(String kontoinhaber, String kontoart) {
+
+    public Konto(String kontoinhaber, String kontoart, String bankleitzahl, String kontonummer, String kontofuehrungsgebuehren, double kontostand) {
         this.kontoinhaber = kontoinhaber;
-        this.bankleitzahl = generateBankleitzahl();
-        this.kontonummer = generateKontonummer();
+        this.bankleitzahl = bankleitzahl;
+        this.kontonummer = kontonummer;
         this.ueberziehungsrahmen = 0.0;
-        this.kontofuehrungsgebuehren = 0.0;
-        this.kontostand = 1000000.0;
+        this.kontofuehrungsgebuehren = kontofuehrungsgebuehren;
+        this.kontostand = kontostand;
         this.kontoart = kontoart;
     }
+
 
     private String generateBankleitzahl() {
         return String.format("%10d", new Random().nextInt(100000000));
