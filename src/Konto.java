@@ -58,6 +58,11 @@ class Konto {
         return kontonummer;
     }
 
+    public String getKontoinhaber() {
+        return kontoinhaber;
+    }
+
+
     public void ueberweisen(Konto zielkonto, double betrag) {
         if (kontostand - betrag >= -ueberziehungsrahmen) {
             abheben(betrag);

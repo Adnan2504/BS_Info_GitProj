@@ -14,13 +14,12 @@ public class MainForm {
 
     public List<Konto> konten = new ArrayList<>();
 
-
     public MainForm() {
         kontoAnlegenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame kontoAnlegenFrame = new JFrame("konotAnlegenFrame");
-                kontoAnlegenFrame.setContentPane(new KontoAnlegen().kontoAnlegen);
+                kontoAnlegenFrame.setContentPane(new KontoAnlegen(konten).kontoAnlegen);
                 kontoAnlegenFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 kontoAnlegenFrame.setVisible(true);
                 kontoAnlegenFrame.pack();
@@ -36,6 +35,8 @@ public class MainForm {
                         message.append("Kontonummer: " + konto.kontonummer + "\n");
                         message.append("Kontostand: " + konto.kontostand + "\n");
                         message.append("Kontoart: " + konto.kontoart + "\n");
+                        message.append("- - - - - - - - - - - - - - - - - - -" + "\n");
+
                     }
                     JOptionPane.showMessageDialog(null, message, "List Output", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -44,13 +45,15 @@ public class MainForm {
         einzahlenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame geldEinzahlenField = new JFrame("geldEinzahlenField");
-                geldEinzahlenField.setContentPane(new geldEinzahlen().geldEinzahlenForm);
-                geldEinzahlenField.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                geldEinzahlenField.setVisible(true);
-                geldEinzahlenField.pack();
+                JFrame geldEinzahlenFrame = new JFrame("Geld Einzahlen");
+                geldEinzahlenFrame.setContentPane(new geldEinzahlen(konten).geldEinzahlenForm);
+                geldEinzahlenFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                geldEinzahlenFrame.setVisible(true);
+                geldEinzahlenFrame.pack();
+
             }
         });
+
         abhebenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -59,6 +62,16 @@ public class MainForm {
                 geldAbhebenField.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 geldAbhebenField.setVisible(true);
                 geldAbhebenField.pack();
+            }
+        });
+        geldÜberweisenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame geldUeberweisenField = new JFrame("geldUeberweisenField");
+                geldUeberweisenField.setContentPane(new geldUeberweisen().geldUeberweisenForm);
+                geldUeberweisenField.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                geldUeberweisenField.setVisible(true);
+                geldUeberweisenField.pack();
             }
         });
     }

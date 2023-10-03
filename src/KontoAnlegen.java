@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 
 public class KontoAnlegen {
@@ -16,7 +17,7 @@ public class KontoAnlegen {
     private JTextField blzText;
 
 
-    public KontoAnlegen() {
+    public KontoAnlegen(List<Konto> konten) {
 
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
         kontoartcomboBox.setModel(comboBoxModel);
@@ -27,12 +28,31 @@ public class KontoAnlegen {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String a = kontostandText.getText();
-                Double kontoStand = Double.parseDouble(a);
-                Konto konto = new Konto(kontoInhaberText.toString(), kontoartcomboBox.getSelectedItem().toString(), blzText.toString(), konotnummerText.toString(), zinsenText.toString(), kontoStand);
-                MainForm mainform = new MainForm();
-                mainform.konten.add(konto);
-                mainform.displayKonten();
+                try {
+                    String kontoInhaber = kontoInhaberText.getText();
+                    String kontoArt = kontoartcomboBox.getSelectedItem().toString();
+                    String blz = blzText.getText();
+                    String kontonummer = konotnummerText.getText();
+                    String zinsen = zinsenText.getText();
+                    Double kontostand = Double.parseDouble(kontostandText.getText());
+
+                    Konto konto = new Konto(kontoInhaber, kontoArt, blz, kontonummer, zinsen, kontostand);
+                    MainForm mainform = new MainForm();
+                    mainform.konten.add(konto);
+                    mainform.displayKonten();
+                    konten.add(konto);
+
+                    System.out.println(konto);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for Kontostand.");
+                }
+            }
+        });
+
+        closeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
