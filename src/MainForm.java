@@ -11,6 +11,7 @@ public class MainForm {
     private JButton einzahlenButton;
     private JPanel mainForm;
     private JButton abhebenButton;
+    private JButton cancelButton;
 
     public List<Konto> konten = new ArrayList<>();
 
@@ -36,7 +37,6 @@ public class MainForm {
                         message.append("Kontostand: " + konto.kontostand + "\n");
                         message.append("Kontoart: " + konto.kontoart + "\n");
                         message.append("- - - - - - - - - - - - - - - - - - -" + "\n");
-
                     }
                     JOptionPane.showMessageDialog(null, message, "List Output", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -46,11 +46,11 @@ public class MainForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame geldEinzahlenFrame = new JFrame("Geld Einzahlen");
+                displayKonten();
                 geldEinzahlenFrame.setContentPane(new geldEinzahlen(konten).geldEinzahlenForm);
                 geldEinzahlenFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 geldEinzahlenFrame.setVisible(true);
                 geldEinzahlenFrame.pack();
-
             }
         });
 
@@ -58,20 +58,29 @@ public class MainForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame geldAbhebenField = new JFrame("geldAbhebenField");
-                geldAbhebenField.setContentPane(new geldAbheben().geldAbhebenField);
+                geldAbhebenField.setContentPane(new geldAbheben(konten).geldAbhebenField);
                 geldAbhebenField.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 geldAbhebenField.setVisible(true);
                 geldAbhebenField.pack();
             }
         });
+
         geldÜberweisenButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame geldUeberweisenField = new JFrame("geldUeberweisenField");
-                geldUeberweisenField.setContentPane(new geldUeberweisen().geldUeberweisenForm);
+                geldUeberweisenField.setContentPane(new geldUeberweisen(konten).geldUeberweisenForm);
                 geldUeberweisenField.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 geldUeberweisenField.setVisible(true);
                 geldUeberweisenField.pack();
+            }
+        });
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainForm);
+                frame.dispose();
             }
         });
     }

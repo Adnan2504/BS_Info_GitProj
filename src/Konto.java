@@ -12,7 +12,6 @@ class Konto {
     public double kontostand;
     public String kontoart;
 
-
     public Konto(String kontoinhaber, String kontoart, String bankleitzahl, String kontonummer, String kontofuehrungsgebuehren, double kontostand) {
         this.kontoinhaber = kontoinhaber;
         this.bankleitzahl = bankleitzahl;
@@ -22,7 +21,6 @@ class Konto {
         this.kontostand = kontostand;
         this.kontoart = kontoart;
     }
-
 
     private String generateBankleitzahl() {
         return String.format("%10d", new Random().nextInt(100000000));
@@ -36,11 +34,12 @@ class Konto {
         kontostand += betrag;
     }
 
-    public void abheben(double betrag) {
+    public boolean abheben(double betrag) {
         if (kontostand - betrag >= -ueberziehungsrahmen) {
             kontostand -= betrag;
+            return true;
         } else {
-            System.out.println("Nicht genug Guthaben.");
+            return false;
         }
     }
 
@@ -61,7 +60,6 @@ class Konto {
     public String getKontoinhaber() {
         return kontoinhaber;
     }
-
 
     public void ueberweisen(Konto zielkonto, double betrag) {
         if (kontostand - betrag >= -ueberziehungsrahmen) {

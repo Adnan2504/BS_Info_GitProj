@@ -19,12 +19,10 @@ public class KontoAnlegen {
 
     public KontoAnlegen(List<Konto> konten) {
 
-        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
-        kontoartcomboBox.setModel(comboBoxModel);
+        kontoartcomboBox.addItem("Giro");
+        kontoartcomboBox.addItem("Spar");
+        kontoartcomboBox.addItem("Kredit");
 
-        comboBoxModel.addElement("Spar");
-        comboBoxModel.addElement("Kredit");
-        comboBoxModel.addElement("Giro");
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,7 +42,7 @@ public class KontoAnlegen {
 
                     System.out.println(konto);
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number for Kontostand.");
+                    JOptionPane.showMessageDialog(null, "Ungültige Eingabe. Bitte geben Sie eine gültige Zahl für den Kontostand ein.");
                 }
             }
         });
@@ -52,7 +50,8 @@ public class KontoAnlegen {
         closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(kontoAnlegen);
+                frame.dispose();
             }
         });
     }

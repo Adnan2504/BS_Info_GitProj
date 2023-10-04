@@ -55,7 +55,6 @@ public class Kontoverwaltung {
             return;
 
         }
-
         System.out.println("Kontonummer nicht gefunden.");
     }
 
@@ -74,7 +73,6 @@ public class Kontoverwaltung {
             return;
 
         }
-
         System.out.println("Kontonummer nicht gefunden.");
     }
 
