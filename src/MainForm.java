@@ -12,7 +12,6 @@ public class MainForm {
     private JPanel mainForm;
     private JButton abhebenButton;
     private JButton cancelButton;
-
     public List<Konto> konten = new ArrayList<>();
 
     public MainForm() {
@@ -30,15 +29,15 @@ public class MainForm {
         kontoAuszugButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    StringBuilder message = new StringBuilder("List of Konten:\n");
-                    for (Konto konto : konten) {
-                        message.append("Kontoinhaber: " + konto.kontoinhaber + "\n");
-                        message.append("Kontonummer: " + konto.kontonummer + "\n");
-                        message.append("Kontostand: " + konto.kontostand + "\n");
-                        message.append("Kontoart: " + konto.kontoart + "\n");
-                        message.append("- - - - - - - - - - - - - - - - - - -" + "\n");
-                    }
-                    JOptionPane.showMessageDialog(null, message, "List Output", JOptionPane.INFORMATION_MESSAGE);
+                StringBuilder message = new StringBuilder("List of Konten:\n");
+                for (Konto konto : konten) {
+                    message.append("Kontoinhaber: " + konto.kontoinhaber + "\n");
+                    message.append("Kontonummer: " + konto.kontonummer + "\n");
+                    message.append("Kontostand: " + konto.kontostand + "\n");
+                    message.append("Kontoart: " + konto.kontoart + "\n");
+                    message.append("- - - - - - - - - - - - - - - - - - -" + "\n");
+                }
+                JOptionPane.showMessageDialog(null, message, "List Output", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
